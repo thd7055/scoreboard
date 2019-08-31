@@ -1,12 +1,15 @@
 import React from "react";
-import {Counter} from "./components/Counter";
+import { Counter } from './Counter';
 
 export const Player = (props) => (
-    <div className="player">
+	<div className="player">
 		<span className="player-name">
 			<button className="remove-player" onClick={() => props.removePlayer(props.id)}> x </button>
-            {props.name}
+			{props.name}
 		</span>
-        <Counter score={props.score} />
-    </div>
+		<Counter
+			score={props.score}
+			id={props.id}
+			changeScore={props.changeScore}/>
+	</div>
 )
