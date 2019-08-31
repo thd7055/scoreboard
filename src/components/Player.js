@@ -1,21 +1,28 @@
 import React from "react";
 import { Counter } from './Counter';
 
-export class Player extends React.PureComponent{
+export class Player extends React.Component{
 	render() {
-		console.log(props.name, 'rendered');
-		return(
+		console.log(this.props.name, 'rendered');
+		const {removePlayer, id, name, score, changeScore} = this.props
+		return (
 			<div className="player">
-		<span className="player-name">
-			<button className="remove-player" onClick={() => this.removePlayer(this.props.id)}> x </button>
-			{this.props.name}
-		</span>
+				<span className="player-name">
+					<button className="remove-player" onClick={() => removePlayer(id)}> x </button>
+					{name}
+				</span>
 				<Counter
-					score={this.props.score}
-					id={this.props.id}
-					changeScore={this.props.changeScore}/>
+					score={score}
+					id={id}
+					changeScore={changeScore}/>
 			</div>
 		)
+	}
+	shouldComponentUpdate(nextProps, nextState, nextContext) {
+		console.log(nextProps);
+		//score가 다를 경우에만 true를 return
+		return this.props.score !== nextProps.score;
+
 	}
 }
 
