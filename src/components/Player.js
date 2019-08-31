@@ -1,5 +1,6 @@
 import React from "react";
 import { Counter } from './Counter';
+import PropTypes from 'prop-types';
 
 export class Player extends React.Component{
 	render() {
@@ -26,19 +27,29 @@ export class Player extends React.Component{
 	}
 }
 
-// export const Player = (props) => {
-// 	console.log(props.name, 'rendered');
-//
-// 	return(
-// 		<div className="player">
-// 		<span className="player-name">
-// 			<button className="remove-player" onClick={() => props.removePlayer(props.id)}> x </button>
-// 			{props.name}
-// 		</span>
-// 			<Counter
-// 				score={props.score}
-// 				id={props.id}
-// 				changeScore={props.changeScore}/>
-// 		</div>
-// 	)
-// }
+/*export const Player = (props) => {
+	console.log(props.name, 'rendered');
+
+	return(
+		<div className="player">
+		<span className="player-name">
+			<button className="remove-player" onClick={() => props.removePlayer(props.id)}> x </button>
+			{props.name}
+		</span>
+			<Counter
+				score={props.score}
+				id={props.id}
+				changeScore={props.changeScore}/>
+		</div>
+	)
+}*/
+
+
+// 5가지 type정의
+Player.prototype = {
+	removePlayer: PropTypes.func,
+	changeScore: PropTypes.func,
+	id: PropTypes.number,
+	name: PropTypes.string,
+	score:PropTypes.number
+};
