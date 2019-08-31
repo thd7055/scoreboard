@@ -13,6 +13,9 @@ class App extends React.Component {
             {name: 'PARK', score: 30, id: 4},
         ]
     }
+
+    maxId = 4;
+
     constructor() {
         super();
         this.handleRemovePlayer = this.handleRemovePlayer.bind(this);
@@ -35,7 +38,8 @@ class App extends React.Component {
                         )
                     })
                 }
-                <AddPlayerForm />
+                 {/*2. 콜백 function을 props로 내려주기*/}
+                <AddPlayerForm addPlayer={this.handleAddPlayer}/>
             </div>
         )
     }
@@ -59,6 +63,17 @@ class App extends React.Component {
             })
             return {players}
         })
+    }
+    // 1. 콜백function 정의
+    handleAddPlayer = (name) => {
+     console.log(name);
+     // add player 로직
+    this.setState(prevState =>{
+        //원본 배열을 훼손하면 안된다. => deep copy 해야한다.
+        const players = [...prevState.players]; // [] -> 새로운 메모리(바구니)
+        players.push({name, score:0, id: ++this.maxId});
+        return {players};
+    });
     }
 }
 
