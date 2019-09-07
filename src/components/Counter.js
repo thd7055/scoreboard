@@ -25,7 +25,7 @@ export class Counter extends React.Component {
     }
 }
 
-Counter.prototype = {
+Counter.propTypes = {
     score: PropTypes.number,
     id:PropTypes.number,
     changeScore: PropTypes.func

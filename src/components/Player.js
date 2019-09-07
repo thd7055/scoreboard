@@ -3,6 +3,15 @@ import { Counter } from './Counter';
 import PropTypes from 'prop-types';
 
 export class Player extends React.Component{
+    static propTypes = {
+        // 5가지 type정의
+        removePlayer: PropTypes.func,
+        changeScore: PropTypes.func,
+        id: PropTypes.number,
+        name: PropTypes.string,
+        score: PropTypes.number
+
+    }
 	render() {
 		console.log(this.props.name, 'rendered');
 		const {removePlayer, id, name, score, changeScore} = this.props
@@ -45,11 +54,3 @@ export class Player extends React.Component{
 }*/
 
 
-// 5가지 type정의
-Player.prototype = {
-	removePlayer: PropTypes.func,
-	changeScore: PropTypes.func,
-	id: PropTypes.number,
-	name: PropTypes.string,
-	score:PropTypes.number
-};
